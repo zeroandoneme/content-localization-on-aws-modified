@@ -37,3 +37,8 @@ The following Cloudformation templates will deploy the Content Localization fron
 Launch in us-west-2 <br>
 [![Launch in us-west-2](doc/images/launch-stack.png)](https://console.aws.amazon.com/cloudformation/home?region=us-west-2#/stacks/new?stackName=clo&templateURL=https://zero-and-one-solutions.s3.ap-south-1.amazonaws.com/content-localization-on-aws-modified/content-localization/v0.0/content-localization-on-aws.yaml)
 
+Region| Launch
+------|-----
+US West (Oregon) | [![Launch in us-west-2](doc/images/launch-stack.png)](https://console.aws.amazon.com/cloudformation/home?region=us-west-2#/stacks/new?stackName=clo&templateURL=https://zero-and-one-solutions.s3.ap-south-1.amazonaws.com/content-localization-on-aws-modified/content-localization/v0.0/content-localization-on-aws.yaml)
+EU West (Ireland) | [![Launch in eu-west-1](doc/images/launch-stack.png)](https://console.aws.amazon.com/cloudformation/home?region=eu-west-1#/stacks/new?stackName=clo&templateURL=https://zero-and-one-solutions-eu-west-1.s3.eu-west-1.amazonaws.com/content-localization-on-aws-modified/content-localization/v0.0/content-localization-on-aws.yaml)
+
