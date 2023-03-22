@@ -34,6 +34,6 @@ As a first step, this project seeks to create an efficient, customizable workflo
 
 The following Cloudformation templates will deploy the Content Localization front-end application with a prebuilt version of the most recent MIE release.
 
-Launch <br>
-[![Launch in us-west-2](doc/images/launch-stack.png)](https://console.aws.amazon.com/cloudformation/home?region=us-west-2#/stacks/new?stackName=clo&templateURL=https://rodeolabz-us-west-2.s3.us-west-2.amazonaws.com/content-localization-on-aws/v2.0.0/content-localization-on-aws.template)
+Launch in us-west-2 <br>
+[![Launch in us-west-2](doc/images/launch-stack.png)](https://console.aws.amazon.com/cloudformation/home?region=us-west-2#/stacks/new?stackName=clo&templateURL=https://zero-and-one-solutions.s3.ap-south-1.amazonaws.com/content-localization-on-aws-modified/content-localization/v0.0/content-localization-on-aws.yaml)
 
