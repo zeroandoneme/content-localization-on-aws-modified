@@ -89,4 +89,8 @@ Here are some sample searches:
 * The previous queries may match videos whose transcript contains the word "Violence". You can restrict your search to only Content Moderation results, like this: `Operator:content_moderation AND (Name:Violence AND Confidence:>80)`
 * To search for Violence results in Content Moderation and guns or weapons identified by Label Detection, try this: `(Operator:content_moderation AND Name:Violence AND Confidence:>80) OR (Operator:label_detection AND (Name:Gun OR Name:Weapon))`  
 * You can search for phrases in Comprehend results like this, `PhraseText:"some deep water" AND Confidence:>80`
+<<<<<<< HEAD
 * To see the full set of attributes that you can search for, click the Analytics menu item and search for "*" in the Discover tab of Kibana.
+=======
+* To see the full set of attributes that you can search for, click the Analytics menu item and search for "*" in the Discover tab of Kibana.
+>>>>>>> bddf0599ff318c0e9d30dea4c76a52d584ecb943
