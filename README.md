@@ -1,9 +1,13 @@
 # Modified Content Localization on AWS 
 
-Welcome to the Modified Content Localization on AWS project! This project will help you extend the reach of your VOD content by quickly and efficiently creating accurate multi-language subtitles using AWS AI Services.  You can make manual corrections to the automatically created subtitles and use advanced AWS AI Service customization features to improve the results of the automation for your content domain. Content Localization is built on [Modified Media Insights Engine (MIE)](https://github.com/zeroandoneme/media-insights-on-aws-modified.git), a framework that helps accelerate the development of serverless applications that process video, images, audio, and text with artificial intelligence services and multimedia services on AWS.
+Welcome to the Modified Content Localization on AWS project! This project will help you extend the reach of your VOD content by quickly and efficiently creating accurate multi-language subtitles using AWS AI Services. You can make manual corrections to the automatically created subtitles and use advanced AWS AI Service customization features to improve the results of the automation for your content domain. Content Localization is built on Modified Media Insights Engine (MIE), a framework that helps accelerate the development of serverless applications that process video, images, audio, and text with artificial intelligence services and multimedia services on AWS.
 
-The modified version of the Content Localization on AWS project provides significant improvement to the original AWS solution by enabling the workflow to be run based on an subtitle file only. This modification greatly streamlines the process of creating multi-language subtitles, resulting in a significant reduction of both time and cost by up to 70% from the initial solution {in the previouis solution you were forced to have the video as well}.
+Enhanced Language Support with OpenAI's Whisper: <br>
+The modified version of the Content Localization on AWS project has also integrated OpenAI's Whisper for Arabic and Turkish models, providing exceptional transcription capabilities for these languages. This integration ensures a higher level of accuracy and efficiency in transcribing Arabic and Turkish audio content, which is essential for creating quality subtitles in these languages.
 
+Streamlined Workflow with Subtitle File Option: <br>
+Another significant improvement to the original AWS solution is enabling the workflow to be run based on a subtitle file only. This modification greatly streamlines the process of creating multi-language subtitles, resulting in a significant reduction of both time and cost by up to 70% from the initial solution if you intend to run the translation only (in the previous solution you were forced to have the video as well).
+<br><br>
 ![Architecture Overview](doc/images/ContentLocalizationArchitectureOverview.png)
 Localization is the process of taking video content that was created for audiences in one geography and transforming it to make it relevant and accessible to audiences in a new geography.  Creating alternative language subtitle tracks is central to the localization process.  This application presents a guided experience for automatically generating and correcting subtitles for videos in multiple languages using AWS AI Services.  The corrections made by editors can be used to customize the results of AWS AI services for future workflows.  This type of AI/ML workflow, which incorporates user corrections is often referred to as “human in the loop”.
 
@@ -36,6 +40,53 @@ The following Cloudformation templates will deploy the Content Localization fron
 
 Region| Launch
 ------|-----
-US West (Oregon) | [![Launch in us-west-2](doc/images/launch-stack.png)](https://console.aws.amazon.com/cloudformation/home?region=us-west-2#/stacks/new?stackName=clo&templateURL=https://zero-and-one-solutions.s3.ap-south-1.amazonaws.com/content-localization-on-aws-modified/content-localization/v0.0/content-localization-on-aws.yaml)
-EU West (Ireland) | [![Launch in eu-west-1](doc/images/launch-stack.png)](https://console.aws.amazon.com/cloudformation/home?region=eu-west-1#/stacks/new?stackName=clo&templateURL=https://zero-and-one-solutions-eu-west-1.s3.eu-west-1.amazonaws.com/content-localization-on-aws-modified/content-localization/v0.0/content-localization-on-aws.yaml)
+EU West (Ireland) | [![Launch in eu-west-1](doc/images/launch-stack.png)](https://zero-and-one-solutions-eu-west-1.s3.eu-west-1.amazonaws.com/content-localization-on-aws-modified/content-localization/v1.0/content-localization-on-aws.yaml)
 
+# Screenshots
+
+Translation analysis: <br>
+![Translation Analysis](doc/images/ig-view-subtitles.png) <br>
+
+Workflow configuration: <br>
+![Workflow configuration](doc/images/ig-upload-configure.png) <br><br>
+
+# COST
+
+You are responsible for the cost of the AWS services used while running this application. The primary cost factors are from using Amazon Rekognition, Amazon Transcribe, Amazon Translate, Amazon Comprehend, Amazon Polly and Amazon OpenSearch Service (successor to Amazon Elasticsearch Service). With all services enabled, Videos cost about $0.50 per minute to process, but can vary between $0.10 per minute and $0.60 per minute depending on the video content and the types of analysis enabled in the application.  The default workflow for Content Localization only enables Amazon Transcribe, Amazon Translate, Amazon Comprehend, and Amazon Polly.   Data storage and Amazon ES will cost approximately ***$10.00 per day*** regardless of the quantity or type of video content.
+
+After a video is uploaded into the solution, the costs for processing are a one-time expense. However, data storage costs occur daily.
+
+For more information about cost, see the pricing webpage for each AWS service you will be using in this solution. If you need to process a large volume of videos, we recommend that you contact your AWS account representative for at-scale pricing. 
+
+# Subtitle workflow
+
+After uploading a video or image in the GUI, the application runs a workflow in Media Insights on AWS that extracts insights using a variety of media analysis services on AWS and stores them in a search engine for easy exploration. The following flow diagram illustrates this workflow:
+
+[Image: Workflow.png]
+This application includes the following features:
+
+
+* Proxy encode of videos and separation of video and audio tracks using **AWS Elemental MediaConvert**. 
+* Convert speech to text from audio and video assets using **Amazon Transcribe**.
+* Convert Transcribe transcripts to subtitles
+* Convert subtitles from one language to another using **Amazon Translate**.
+* Generate a voice audio track for translations using **Amazon Polly**
+
+Users can enable or disable operators in the upload view shown below:
+
+![operators categories](doc/images/ig-operator-categories.png)
+
+
+# Search Capabilities:
+
+The search field in the Collection view provides the ability to find media assets that contain specified metadata terms. Search queries are executed by Amazon OpenSearch, which uses full-text search techniques to examine all the words in every metadata document in its database. Everything you see in the analysis page is searchable. Even data that is excluded by the threshold you set in the Confidence slider is searchable. Search queries must use valid Lucene syntax.
+
+Here are some sample searches:
+
+* Search for filenames containing the suffix ".mp4" with, `*.mp4` or `filename:*.mp4`
+* Since Content Moderation returns a "Violence" label when it detects violence in a video, you can search for any video containing violence simply with: `Violence`
+* Search for videos containing violence with a 80% confidence threshold: `Violence AND Confidence:>80` 
+* The previous queries may match videos whose transcript contains the word "Violence". You can restrict your search to only Content Moderation results, like this: `Operator:content_moderation AND (Name:Violence AND Confidence:>80)`
+* To search for Violence results in Content Moderation and guns or weapons identified by Label Detection, try this: `(Operator:content_moderation AND Name:Violence AND Confidence:>80) OR (Operator:label_detection AND (Name:Gun OR Name:Weapon))`  
+* You can search for phrases in Comprehend results like this, `PhraseText:"some deep water" AND Confidence:>80`
+* To see the full set of attributes that you can search for, click the Analytics menu item and search for "*" in the Discover tab of Kibana.
