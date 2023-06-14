@@ -38,9 +38,9 @@ As a first step, this project seeks to create an efficient, customizable workflo
 
 The following Cloudformation templates will deploy the Content Localization front-end application with a prebuilt version of the most recent MIE release.
 
-Region| Launch
-------|-----
-EU West (Ireland) | [![Launch in eu-west-1](doc/images/launch-stack.png)](https://zero-and-one-solutions-eu-west-1.s3.eu-west-1.amazonaws.com/content-localization-on-aws-modified/content-localization/v1.0/content-localization-on-aws.yaml)
+| Region            | Launch                                                                                                                                                                                                                     |
+|-------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| EU West (Ireland) | [![Launch in eu-west-1](doc/images/launch-stack.png)](https://zero-and-one-solutions-eu-west-1.s3.eu-west-1.amazonaws.com/content-localization-on-aws-modified/content-localization/v1.0/content-localization-on-aws.yaml) |
 
 # Screenshots
 
