@@ -8,7 +8,7 @@ The modified version of the Content Localization on AWS project has also integra
 Streamlined Workflow with Subtitle File Option: <br>
 Another significant improvement to the original AWS solution is enabling the workflow to be run based on a subtitle file only. This modification greatly streamlines the process of creating multi-language subtitles, resulting in a significant reduction of both time and cost by up to 70% from the initial solution if you intend to run the translation only (in the previous solution you were forced to have the video as well).
 <br><br>
-![Architecture Overview](doc\images\ArchitectureOverview.png)
+![Architecture Overview](doc/images/ArchitectureOverview.png)<br>
 Localization is the process of taking video content that was created for audiences in one geography and transforming it to make it relevant and accessible to audiences in a new geography.  Creating alternative language subtitle tracks is central to the localization process.  This application presents a guided experience for automatically generating and correcting subtitles for videos in multiple languages using AWS AI Services.  The corrections made by editors can be used to customize the results of AWS AI services for future workflows.  This type of AI/ML workflow, which incorporates user corrections is often referred to as “human in the loop”.
 
 Content Localization workflows can make use of advanced customization features provided by Amazon Transcribe and Amazon Translate:
