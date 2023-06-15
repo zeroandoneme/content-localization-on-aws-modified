@@ -51,12 +51,11 @@ Workflow configuration: <br>
 ![Workflow configuration](doc/images/ig-upload-configure.png) <br><br>
 
 # COST
+You are responsible for the cost of the AWS services used while running this application. The primary cost factors are from using Amazon Rekognition, Amazon Transcribe, Amazon Translate, Amazon Comprehend, Amazon Polly, Amazon OpenSearch Service (successor to Amazon Elasticsearch Service), and Amazon SageMaker Asynchronous Inference. With all services enabled, Videos cost about $0.50 per minute to process, but can vary between $0.10 per minute and $0.60 per minute depending on the video content and the types of analysis enabled in the application. The default workflow for Content Localization only enables Amazon Transcribe, Amazon Translate, Amazon Comprehend, and Amazon Polly. Data storage and Amazon ES will cost approximately $10.00 per day regardless of the quantity or type of video content.
 
-You are responsible for the cost of the AWS services used while running this application. The primary cost factors are from using Amazon Rekognition, Amazon Transcribe, Amazon Translate, Amazon Comprehend, Amazon Polly and Amazon OpenSearch Service (successor to Amazon Elasticsearch Service). With all services enabled, Videos cost about $0.50 per minute to process, but can vary between $0.10 per minute and $0.60 per minute depending on the video content and the types of analysis enabled in the application.  The default workflow for Content Localization only enables Amazon Transcribe, Amazon Translate, Amazon Comprehend, and Amazon Polly.   Data storage and Amazon ES will cost approximately ***$10.00 per day*** regardless of the quantity or type of video content.
+Amazon SageMaker Asynchronous Inference is a near-real-time inference option that queues incoming requests and processes them asynchronously. This option is particularly useful when you need to process large payloads as the data arrives, or run models that have long inference processing times and do not have sub-second latency requirements. By utilizing Amazon SageMaker Asynchronous Inference, you can also save on costs as it allows for autoscaling the instance count to zero when there are no requests to process. This way, you only pay when your endpoint is processing requests, making it a cost-efficient solution for varying workloads.
 
 After a video is uploaded into the solution, the costs for processing are a one-time expense. However, data storage costs occur daily.
-
-For more information about cost, see the pricing webpage for each AWS service you will be using in this solution. If you need to process a large volume of videos, we recommend that you contact your AWS account representative for at-scale pricing. 
 
 # Subtitle workflow
 
