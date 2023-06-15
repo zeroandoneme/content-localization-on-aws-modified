@@ -92,4 +92,3 @@ Here are some sample searches:
 * To see the full set of attributes that you can search for, click the Analytics menu item and search for "*" in the Discover tab of Kibana.
 =======
 * To see the full set of attributes that you can search for, click the Analytics menu item and search for "*" in the Discover tab of Kibana.
->>>>>>> bddf0599ff318c0e9d30dea4c76a52d584ecb943
