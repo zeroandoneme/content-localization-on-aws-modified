@@ -59,7 +59,7 @@ Amazon SageMaker Asynchronous Inference is a near-real-time inference option tha
 
 After a video is uploaded into the solution, the costs for processing are a one-time expense. However, data storage costs occur daily.
 
-Example 1: Default subtitles workflow only, no customizations for Amazon Transcribe and Translate <br>
+Example: Default subtitles workflow only, no customizations for Amazon Transcribe and Translate <br>
 AWS service	Dimensions	Cost [USD] <br>
 Amazon Transcribe	30 minutes of standard audio transcription	$0.72 / video -- Languages other than Turkish and Arabic <br>
 Amazon SageMaker Asynchronous Inference (assuming type is deafault ml.g4dn.2xlarge) 30 minutes $0.5235 / video -- for Turkish and Arabic Languages <br>
