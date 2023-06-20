@@ -59,16 +59,16 @@ Amazon SageMaker Asynchronous Inference is a near-real-time inference option tha
 
 After a video is uploaded into the solution, the costs for processing are a one-time expense. However, data storage costs occur daily.
 
-Example 1: Default subtitles workflow only, no customizations for Amazon Transcribe and Translate
-AWS service	Dimensions	Cost [USD]
-Amazon Transcribe	30 minutes of standard audio transcription	$0.72 / video -- Languages other than Turkish and Arabic
-Amazon SageMaker Asynchronous Inference (assuming type is deafault ml.g4dn.2xlarge) 30 minutes $0.5235 / video -- for Turkish and Arabic Languages
-Amazon Translate	30,500 characters, 5 languages	$2.29 / video
-Amazon Polly	30,500 characters, 5 languages	$0.60 / video
-AWS Elemental MediaConvert	30 minutes, basic tier (<= 30 fps) at SD rate	$0.36 / video
-Amazon OpenSearch Service	t3.small.search instance	$1.39 / day
-Amazon Kinesis Data Streams	Shard hours	$0.28 / day
-Total cost for processing one video, including daily costs:	$5.64
+Example 1: Default subtitles workflow only, no customizations for Amazon Transcribe and Translate <br>
+AWS service	Dimensions	Cost [USD] <br>
+Amazon Transcribe	30 minutes of standard audio transcription	$0.72 / video -- Languages other than Turkish and Arabic <br>
+Amazon SageMaker Asynchronous Inference (assuming type is deafault ml.g4dn.2xlarge) 30 minutes $0.5235 / video -- for Turkish and Arabic Languages <br>
+Amazon Translate	30,500 characters, 5 languages	$2.29 / video <br>
+Amazon Polly	30,500 characters, 5 languages	$0.60 / video <br>
+AWS Elemental MediaConvert	30 minutes, basic tier (<= 30 fps) at SD rate	$0.36 / video <br>
+Amazon OpenSearch Service	t3.small.search instance	$1.39 / day <br>
+Amazon Kinesis Data Streams	Shard hours	$0.28 / day <br>
+Total cost for processing one video, including daily costs:	$5.4435 - $5.64 <br>
 
 # Subtitle workflow
 
