@@ -41,6 +41,8 @@ The following Cloudformation templates will deploy the Content Localization fron
 | Region            | Launch                                                                                                                                                                                                                     |
 |-------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | EU West (Ireland) | [![Launch in eu-west-1](doc/images/launch-stack.png)](https://zero-and-one-solutions-eu-west-1.s3.eu-west-1.amazonaws.com/content-localization-on-aws-modified/content-localization/v1.0/content-localization-on-aws.yaml) |
+| US West (Oregon) | [![Launch in us-west-2](doc/images/launch-stack.png)](https://zero-and-one-solutions-us-west-2.s3.us-west-2.amazonaws.com/content-localization-on-aws-modified/content-localization/v1.0/content-localization-on-aws-us-west-2.yaml) |
+
 
 # Screenshots
 
@@ -56,6 +58,17 @@ You are responsible for the cost of the AWS services used while running this app
 Amazon SageMaker Asynchronous Inference is a near-real-time inference option that queues incoming requests and processes them asynchronously. This option is particularly useful when you need to process large payloads as the data arrives, or run models that have long inference processing times and do not have sub-second latency requirements. By utilizing Amazon SageMaker Asynchronous Inference, you can also save on costs as it allows for autoscaling the instance count to zero when there are no requests to process. This way, you only pay when your endpoint is processing requests, making it a cost-efficient solution for varying workloads.
 
 After a video is uploaded into the solution, the costs for processing are a one-time expense. However, data storage costs occur daily.
+
+Example 1: Default subtitles workflow only, no customizations for Amazon Transcribe and Translate
+AWS service	Dimensions	Cost [USD]
+Amazon Transcribe	30 minutes of standard audio transcription	$0.72 / video -- Languages other than Turkish and Arabic
+Amazon SageMaker Asynchronous Inference (assuming type is deafault ml.g4dn.2xlarge) 30 minutes $0.5235 / video -- for Turkish and Arabic Languages
+Amazon Translate	30,500 characters, 5 languages	$2.29 / video
+Amazon Polly	30,500 characters, 5 languages	$0.60 / video
+AWS Elemental MediaConvert	30 minutes, basic tier (<= 30 fps) at SD rate	$0.36 / video
+Amazon OpenSearch Service	t3.small.search instance	$1.39 / day
+Amazon Kinesis Data Streams	Shard hours	$0.28 / day
+Total cost for processing one video, including daily costs:	$5.64
 
 # Subtitle workflow
 
